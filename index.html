@@ -22,13 +22,13 @@
             padding: 0 20px;
         }
         a { text-decoration: none; }
-        img { max-width: 100%; display: block; } /* 確保圖片不會跑版 */
+        img { max-width: 100%; display: block; }
 
         /* --- 導航列 (Navbar) --- */
         .navbar {
             background-color: #004d80;
             color: white;
-            padding: 5px 0; /* 調整垂直間距 */
+            padding: 5px 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
@@ -37,18 +37,17 @@
         .nav-content {
             display: flex;
             justify-content: space-between;
-            align-items: center; /* 確保內容垂直居中 */
+            align-items: center;
         }
         .logo-area {
-            height: 60px; /* Logo 尺寸 */
+            height: 60px;
             margin-right: 20px;
             flex-shrink: 0;
         }
         .logo-area img {
             height: 100%;
             width: auto;
-            /* 提醒：請確保 image/logo.png 為去背圖，以避免藍色底色遮擋 */
-            background-color: transparent; 
+            background-color: transparent;
         }
         .nav-links {
             list-style: none;
@@ -85,7 +84,7 @@
                 text-align: center;
             }
             .logo-area img {
-                margin: 0 auto; /* Logo 置中 */
+                margin: 0 auto;
             }
             .nav-links {
                 width: 100%;
@@ -96,7 +95,7 @@
                 padding-bottom: 5px;
                 scrollbar-width: none;
             }
-            .nav-links::-webkit-scrollbar { 
+            .nav-links::-webkit-scrollbar {
                 display: none;
             }
             .nav-links li {
@@ -139,14 +138,13 @@
             border-left: 5px solid #007bff;
             padding-left: 10px;
             margin-top: 30px;
-            margin-bottom: 20px; /* 增加底部間距 */
+            margin-bottom: 20px;
         }
 
-        /* --- 首頁樣式 --- */
-        
+        /* --- 平台連結樣式 (所有連結皆置中) --- */
         .platform-links {
             display: flex;
-            justify-content: center;
+            justify-content: center; /* 確保連結置中 */
             gap: 15px;
             margin-top: 30px;
             flex-wrap: wrap;
@@ -166,13 +164,12 @@
         .bg-discord { background-color: #5865F2; }
         .bg-notion { background-color: #000000; }
         
-        /* --- 新增：次要連結顏色 (用於區分 Physical AI) --- */
+        /* --- 次要連結顏色 (用於區分 Physical AI) --- */
         .bg-secondary { background-color: #004d80 !important; }
 
         /* --- 團隊成員卡片 (含照片) Grid 設定 --- */
         .team-grid {
             display: grid;
-            /* 調整 minmax 為 220px，更容易並排顯示 */
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 30px;
             margin-top: 20px;
@@ -200,7 +197,7 @@
             object-fit: cover;
             margin-bottom: 15px;
             border: 3px solid #007bff;
-            background-color: #e0e0e0; /* 圖片載入失敗時的底色 */
+            background-color: #e0e0e0;
         }
         .member-card h4 {
             color: #004d80;
@@ -239,11 +236,10 @@
             margin-top: 40px;
         }
         .footer-grid {
-            /* 保持水平排列 */
             display: flex;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 50px; /* 增加間距 */
+            gap: 50px;
             align-items: flex-start;
         }
         .footer-item {
@@ -259,20 +255,15 @@
             margin-bottom: 15px;
             font-weight: bold;
             display: block;
-            border-bottom: 2px solid #007bff; /* 增加底線強調 */
+            border-bottom: 2px solid #007bff;
             padding-bottom: 5px;
         }
         .footer-item img {
-            height: 70px; /* 稍微放大 Logo */
+            height: 70px;
             width: auto;
             object-fit: contain;
-            /* 提醒：請確保這些 Logo 圖為去背圖 */
             background-color: transparent;
         }
-
-        /* * 已移除原本將 footer-grid 設為 flex-direction: column 的手機版調整 
-         * 現在 footer-grid 會在所有尺寸下保持水平排列，空間不足時會自動換行 
-         */
     </style>
 </head>
 <body>
@@ -311,9 +302,10 @@
             </div>
             
             <div class="platform-links" style="margin-top: 15px;">
-                <a href="https://discord.gg/jva5jQVA" class="bg-discord"><i class="fab fa-discord"></i>Discord 社群</a>
-                <a href="https://www.notion.so/Agent-AI-aefef4ca13864056b7ebbc70e624e084?source=copy_link" class="bg-notion"><i class="fas fa-sticky-note"></i>Agent AI Notion 共編</a>
-                <a href="https://www.notion.so/Physical-AI-5a3bc5d40bb845e1b55e909104518526?source=copy_link" class="bg-notion bg-secondary"><i class="fas fa-sticky-note"></i>Physical AI Notion 共編</a>
+                <a href="[Agent AI Discord 邀請連結]" class="bg-discord"><i class="fab fa-discord"></i>Agent AI Discord 社群</a>
+                <a href="[Agent AI Notion 共編連結]" class="bg-notion"><i class="fas fa-sticky-note"></i>Agent AI Notion 共編</a>
+                <a href="[Physical AI Discord 邀請連結]" class="bg-discord bg-secondary"><i class="fab fa-discord"></i>Physical AI Discord 社群</a>
+                <a href="[Physical AI Notion 共編連結]" class="bg-notion bg-secondary"><i class="fas fa-sticky-note"></i>Physical AI Notion 共編</a>
             </div>
         </div>
     </section>
@@ -431,14 +423,14 @@
                 <li>課程資源庫：課程投影片、講義、實作範例下載/連結。</li>
             </ul>
 
-            <div class="platform-links" style="justify-content: flex-start; margin-bottom: 20px;">
+            <div class="platform-links" style="margin-bottom: 20px;">
                 <a href="[您的GitHub連結]" class="bg-github"><i class="fab fa-github"></i>前往 GitHub 課程資源</a>
             </div>
             
             <h3>課程共編平台 (Notion)</h3>
-            <div class="platform-links" style="justify-content: flex-start; margin-top: 15px;">
-                <a href="https://www.notion.so/Agent-AI-aefef4ca13864056b7ebbc70e624e084?source=copy_link" class="bg-notion"><i class="fas fa-sticky-note"></i>Agent AI 課程模組</a>
-                <a href="https://www.notion.so/Physical-AI-5a3bc5d40bb845e1b55e909104518526?source=copy_link" class="bg-notion bg-secondary"><i class="fas fa-sticky-note"></i>Physical AI 課程模組</a>
+            <div class="platform-links" style="margin-top: 15px;">
+                <a href="[Agent AI Notion 共編連結]" class="bg-notion"><i class="fas fa-sticky-note"></i>Agent AI 課程模組</a>
+                <a href="[Physical AI Notion 共編連結]" class="bg-notion bg-secondary"><i class="fas fa-sticky-note"></i>Physical AI 課程模組</a>
             </div>
         </div>
     </section>
@@ -453,8 +445,10 @@
             </ul>
             
             <h3>專業社群 (Discord)</h3>
-            <div class="platform-links" style="justify-content: flex-start; margin-top: 15px;">
-                <a href="https://discord.gg/jva5jQVA" class="bg-discord"><i class="fab fa-discord"></i>立即加入Discord社群</a>
+            <div class="platform-links" style="margin-top: 15px;">
+                <a href="[Agent AI Discord 邀請連結]" class="bg-discord"><i class="fab fa-discord"></i>SIGAgent (智慧代理)</a>
+                <a href="[Physical AI Discord 邀請連結]" class="bg-discord bg-secondary"><i class="fab fa-discord"></i>SIGRobot (實體機器人)</a>
+            </div>
         </div>
     </section>
 
