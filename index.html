@@ -28,7 +28,7 @@
         .navbar {
             background-color: #004d80;
             color: white;
-            padding: 10px 0;
+            padding: 5px 0; /* 調整垂直間距 */
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
@@ -37,16 +37,18 @@
         .nav-content {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: center; /* 確保內容垂直居中 */
         }
         .logo-area {
-            height: 40px;
+            height: 60px; /* <<<< 修正點：加大 Logo 尺寸 >>>> */
             margin-right: 20px;
             flex-shrink: 0;
         }
         .logo-area img {
             height: 100%;
             width: auto;
+            /* 提醒：請確保 image/logo.png 為去背圖，以避免藍色底色遮擋 */
+            background-color: transparent; 
         }
         .nav-links {
             list-style: none;
@@ -141,14 +143,7 @@
         }
 
         /* --- 首頁樣式 --- */
-        .home-logo {
-            margin: 0 auto 20px auto;
-            max-width: 300px;
-        }
-        .home-logo img {
-            width: 100%;
-            height: auto;
-        }
+        
         .platform-links {
             display: flex;
             justify-content: center;
@@ -174,7 +169,7 @@
         /* --- 團隊成員卡片 (含照片) Grid 設定 --- */
         .team-grid {
             display: grid;
-            /* 調整 minmax 為 220px，更容易並排顯示，解決垂直問題 */
+            /* 調整 minmax 為 220px，更容易並排顯示 */
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 30px;
             margin-top: 20px;
@@ -267,6 +262,8 @@
             height: 70px; /* 稍微放大 Logo */
             width: auto;
             object-fit: contain;
+            /* 提醒：請確保這些 Logo 圖為去背圖 */
+            background-color: transparent;
         }
 
         /* 手機版底部 Logo 調整 */
@@ -303,9 +300,6 @@
 
     <section id="home">
         <div class="container" style="text-align: center;">
-            <div class="home-logo">
-                <img src="image/logo.png" alt="NAPAI計畫Logo">
-            </div>
             <h1 style="color: #004d80; font-size: 2.5em; margin-bottom: 10px;">
                 智慧代理與實體AI機器人課程推動計畫
             </h1>
@@ -346,7 +340,7 @@
                     <p class="desc">研究興趣包括Web資訊整合、自然語言理解、資料探勘、智慧計算等。現任國科會工程處智慧計算學門召集人。</p>
                 </div>
                 <div class="member-card">
-                    <img src="image/戴敏育.jpg" alt="戴敏育" class="member-photo">
+                    <img src="image/myday_photo.jpg" alt="戴敏育" class="member-photo">
                     <h4>戴敏育 教授</h4>
                     <p class="title">協同主持人 | 國立臺北大學資訊管理研究所</p>
                     <p class="desc">專精於人工智慧、生成式AI、永續綠色金融科技。現任金融科技暨綠色金融研究中心主任。</p>
@@ -372,7 +366,7 @@
                     <p class="desc">專精於資料庫系統、文字探勘、資料探勘、工作流程管理。</p>
                 </div>
                 <div class="member-card">
-                    <img src="image/劉昭麟.jpg" alt="劉昭麟" class="member-photo">
+                    <img src="image/chaolin.jpg" alt="劉昭麟" class="member-photo">
                     <h4>劉昭麟 特聘教授</h4><p class="title">國立政治大學資訊科學系</p>
                     <p class="desc">專精於人工智慧、資料分析與知識探勘、數位人文、計算語言學、自動推理與模型建構。</p>
                 </div>
@@ -416,7 +410,7 @@
                     <p class="desc">專精於人工智慧和生物智慧及其應用、人形機器人、基於人工智慧的服務機器人、模糊系統與控制、機電一體化和4WIS4WID車輛。</p>
                 </div>
                 <div class="member-card">
-                    <img src="image/葉廷仁.jpg" alt="葉廷仁" class="member-photo">
+                    <img src="image/葉廷仁特聘教授.jpg" alt="葉廷仁" class="member-photo">
                     <h4>葉廷仁 特聘教授</h4><p class="title">國立清華大學動力機械工程系</p>
                     <p class="desc">專精於動態系統建模與控制、非線性控制理論、以及機器人應用。</p>
                 </div>
@@ -481,24 +475,24 @@
             <div class="footer-grid">
                 <div class="footer-item">
                     <span>指導單位</span>
-                    <img src="image/logo-edu.png" alt="教育部資訊及科技教育司">
+                    <img src="image/logo_ITE.png">
                     <div style="margin-top:5px; font-size:0.8em; color:#666;">教育部資訊及科技教育司</div>
                 </div>
 
                 <div class="footer-item">
                     <span>主辦單位</span>
-                    <img src="image/logo_NCU.png" alt="國立中央大學">
+                    <img src="image/logo_NCU.png">
                     <div style="margin-top:5px; font-size:0.8em; color:#666;">國立中央大學</div>
                 </div>
 
                 <div class="footer-item">
                     <span>協辦單位</span>
-                    <img src="image/logo_NTPU.png" alt="國立臺北大學">
+                    <img src="image/logo_NTPU.png">
                     <div style="margin-top:5px; font-size:0.8em; color:#666;">國立臺北大學</div>
                 </div>
                 <div class="footer-item">
                     <span>協辦單位</span>
-                    <img src="image/logo_NTHU.png" alt="國立清華大學">
+                    <img src="image/logo_NTHU.png">
                     <div style="margin-top:5px; font-size:0.8em; color:#666;">國立清華大學</div>
                 </div>
             </div>
