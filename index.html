@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>前瞻AI人培-智慧代理及實體AI課程推動計畫 (新版)</title>
+    <title>前瞻AI人培-智慧代理及實體AI課程推動計畫</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 基本樣式設定 */
+        /* --- 全域設定 --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -14,38 +14,38 @@
             background-color: #f4f7f9;
             color: #333;
             line-height: 1.6;
+            padding-bottom: 20px; /* 預留底部空間 */
         }
         .container {
             max-width: 1200px;
             margin: auto;
             padding: 0 20px;
         }
-        /* 導航列 */
+        a { text-decoration: none; }
+
+        /* --- 導航列 (Navbar) --- */
         .navbar {
-            background-color: #004d80; /* 深藍色背景 */
+            background-color: #004d80;
             color: white;
-            padding: 10px 0; /* 調整 padding 配合 Logo */
+            padding: 10px 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
         .nav-content {
-            display: flex; /* 啟用 Flexbox */
-            justify-content: space-between; /* 讓 Logo 和連結分開 */
-            align-items: center; /* 垂直置中 */
-        }
-        /* Logo 區塊樣式 */
-        .logo-area {
-            height: 40px; 
-            margin-right: 20px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
+        .logo-area {
+            height: 40px;
+            margin-right: 20px;
+            flex-shrink: 0; /* 防止 Logo 被壓縮 */
+        }
         .logo-area img {
-            height: 100%; /* 圖片高度符合 Logo 區塊 */
+            height: 100%;
             width: auto;
-            border-radius: 4px;
         }
         .nav-links {
             list-style: none;
@@ -53,24 +53,63 @@
             margin: 0;
             display: flex;
         }
+        .nav-links li {
+            white-space: nowrap; /* 禁止文字換行 */
+        }
         .nav-links a {
             color: white;
-            text-decoration: none;
             padding: 10px 15px;
             display: block;
             font-weight: 600;
             transition: background-color 0.3s;
+            font-size: 1rem;
         }
         .nav-links a:hover {
             background-color: #007bff;
+            border-radius: 4px;
         }
-        /* 主要區塊 */
+
+        /* --- 手機版導航列優化 (水平滑動) --- */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .logo-area {
+                margin-bottom: 10px;
+                margin-left: 10px; /* 手機版稍微留邊 */
+            }
+            .nav-links {
+                width: 100%;
+                overflow-x: auto; /* 允許水平滑動 */
+                -webkit-overflow-scrolling: touch; /* 讓滑動更順暢 */
+                padding-bottom: 5px; /* 預留滑動軸空間 */
+                /* 隱藏滾動條樣式 (選用) */
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none;  /* IE 10+ */
+            }
+            .nav-links::-webkit-scrollbar { 
+                display: none; /* Chrome/Safari */
+            }
+            .nav-links a {
+                padding: 10px 12px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* --- 區塊通用樣式 --- */
         section {
             padding: 60px 0;
             margin-bottom: 20px;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        /* 針對首頁 Banner 不需要圓角和陰影 */
+        #home {
+            box-shadow: none;
+            background-color: #e3f2fd;
+            border-radius: 0;
         }
         h2 {
             text-align: center;
@@ -80,7 +119,8 @@
             border-bottom: 3px solid #007bff;
             display: inline-block;
             padding-bottom: 5px;
-            margin-left: 50%;
+            position: relative;
+            left: 50%;
             transform: translateX(-50%);
         }
         h3 {
@@ -89,10 +129,42 @@
             padding-left: 10px;
             margin-top: 30px;
         }
-        /* 團隊成員卡片樣式 (保持不變) */
+
+        /* --- 首頁樣式 --- */
+        .home-logo {
+            margin: 0 auto 20px auto;
+            max-width: 300px;
+        }
+        .home-logo img {
+            width: 100%;
+            height: auto;
+        }
+        .platform-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .platform-links a {
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s;
+        }
+        .platform-links a:hover { opacity: 0.9; }
+        .platform-links a i { margin-right: 8px; }
+        .bg-github { background-color: #24292e; }
+        .bg-discord { background-color: #5865F2; }
+        .bg-notion { background-color: #000000; }
+
+        /* --- 團隊成員卡片 (含照片) --- */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 20px;
         }
@@ -100,91 +172,97 @@
             background-color: #f9f9f9;
             border: 1px solid #eee;
             border-radius: 8px;
-            padding: 20px;
+            padding: 25px 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: transform 0.3s;
+            text-align: center; /* 讓內容居中 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .member-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        /* 成員照片樣式 */
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* 圓形頭像 */
+            object-fit: cover; /* 保持比例裁切 */
+            margin-bottom: 15px;
+            border: 3px solid #007bff;
+            background-color: #ddd; /* 圖片載入失敗時的底色 */
         }
         .member-card h4 {
             color: #004d80;
-            margin-top: 0;
-            margin-bottom: 5px;
+            margin: 10px 0 5px 0;
+            font-size: 1.2em;
         }
         .member-card p.title {
             color: #007bff;
             font-weight: 600;
             margin-bottom: 10px;
+            font-size: 0.95em;
         }
-        /* 平台整合連結樣式 (保持 Font Awesome Logo 樣式) */
-        .platform-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            flex-wrap: wrap; 
-        }
-        .platform-links a {
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            display: flex; 
-            align-items: center;
-        }
-        .platform-links a i {
-            margin-right: 8px; /* 圖標與文字間的間距 */
-            font-size: 1.2em;
-        }
-        .platform-links a.github { background-color: #24292e; } 
-        .platform-links a.discord { background-color: #7289da; } 
-        .platform-links a.notion { background-color: #000; } 
-
-        .platform-links a.github:hover { background-color: #444; }
-        .platform-links a.discord:hover { background-color: #99aab5; }
-        .platform-links a.notion:hover { background-color: #444; }
-
-        /* 首頁 Logo 樣式 */
-        .home-logo {
-            margin: 0 auto 30px auto;
-            max-width: 250px; /* 限制最大寬度 */
-        }
-        .home-logo img {
+        .member-card p.desc {
+            font-size: 0.9em;
+            color: #666;
+            text-align: left; /* 簡介文字靠左比較好閱讀 */
             width: 100%;
-            height: auto;
         }
 
-        /* 響應式調整 */
-        @media (max-width: 768px) {
-            .nav-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .logo-area {
-                margin-bottom: 10px;
-            }
-            .nav-links {
+        /* --- 聯絡我們樣式 --- */
+        .contact-info {
+            text-align: center;
+            font-size: 1.1em;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        .contact-info p { margin: 10px 0; }
+        .contact-info i { color: #007bff; margin-right: 10px; width: 25px; }
+
+        /* --- 底部 Logo Banner --- */
+        .footer-banner {
+            background-color: #ffffff;
+            border-top: 4px solid #004d80;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 200px;
+        }
+        .footer-item span {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: block;
+        }
+        .footer-item img {
+            height: 60px; /* Logo 高度 */
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* 手機版底部 Logo 調整 */
+        @media (max-width: 600px) {
+            .footer-grid {
                 flex-direction: column;
                 align-items: center;
-                width: 100%;
-            }
-            .nav-links a {
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-            .platform-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            .platform-links a {
-                width: 80%;
-                text-align: center;
-                justify-content: center;
+                gap: 30px;
             }
         }
     </style>
@@ -195,14 +273,14 @@
         <div class="container nav-content">
             <div class="logo-area">
                 <a href="#home">
-                    
-                    <img src="[請替換為您的 Logo 檔案路徑，例如: images/project_logo.png]" alt="NAPAI計畫Logo" style="display: none;">
+                    <img src="images/logo.png" alt="NAPAI計畫Logo">
                 </a>
             </div>
             
             <ul class="nav-links">
                 <li><a href="#home">首頁</a></li>
                 <li><a href="#about">計畫介紹</a></li>
+                <li><a href="#team">計畫團隊</a></li>
                 <li><a href="#curriculum">課程專區</a></li>
                 <li><a href="#community">社群與活動</a></li>
                 <li><a href="#outcomes">成果展示</a></li>
@@ -211,28 +289,22 @@
         </div>
     </nav>
 
-    <section id="home" style="background-color: #e3f2fd;">
+    <section id="home">
         <div class="container" style="text-align: center;">
-            
             <div class="home-logo">
-                
-                <img src="[請替換為您的 Logo 檔案路徑，例如: images/project_logo.png]" alt="NAPAI計畫Logo" style="display: none;">
+                <img src="images/logo.png" alt="NAPAI計畫Logo">
             </div>
-
-            <h1 style="color: #004d80; font-size: 3em; margin-bottom: 10px;">
+            <h1 style="color: #004d80; font-size: 2.5em; margin-bottom: 10px;">
                 智慧代理與實體AI機器人課程推動計畫
             </h1>
-            <p style="font-size: 1.5em; color: #555;">
-                教育部前瞻AI技術人才培育計畫 - 打造未來智慧科技人才
-            </p>
-            <p style="font-size: 1.2em; color: #777;">
-                **兩大主軸：Agentic AI (智慧代理) & Physical AI (實體AI機器人)**
+            <p style="font-size: 1.2em; color: #555;">
+                教育部前瞻AI技術人才培育計畫
             </p>
 
             <div class="platform-links">
-                <a href="[您的GitHub連結]" class="github"><i class="fab fa-github"></i>GitHub - 程式碼與教材</a>
-                <a href="[您的Discord邀請連結]" class="discord"><i class="fab fa-discord"></i>Discord - 加入SIG專業社群</a>
-                <a href="[您的Notion共編連結]" class="notion"><i class="fas fa-sticky-note"></i>Notion - 課程模組共編</a>
+                <a href="[您的GitHub連結]" class="bg-github"><i class="fab fa-github"></i>GitHub</a>
+                <a href="[您的Discord邀請連結]" class="bg-discord"><i class="fab fa-discord"></i>Discord 社群</a>
+                <a href="[您的Notion共編連結]" class="bg-notion"><i class="fas fa-sticky-note"></i>Notion 共編</a>
             </div>
         </div>
     </section>
@@ -240,80 +312,100 @@
     <section id="about">
         <div class="container">
             <h2>計畫介紹</h2>
-
             <h3>計畫定位與目標</h3>
             <p>本計畫旨在因應AI技術典範轉移與產業趨勢，聚焦於「智慧代理 (Agentic AI)」與「實體AI機器人 (Physical AI)」兩大核心主軸，透過培育前瞻AI人才、建立永續師資社群，並產出可重複使用之課程模組。</p>
             <ul>
-                <li>**計畫緣起**：AI技術從大模型進入Agentic AI時代，加速機器人實體化應用。</li>
-                <li>**計畫目標**：培育師資社群、產出高質量課程模組、舉辦競賽活動。</li>
+                <li>計畫緣起：面對生成式 AI、Agentic AI 與 AI 機器人技術快速演進，全球對能夠結合理論、系統開發與實務應用的 AI 專業人才需求大幅提升。臺灣長期在半導體與資通訊產業具備關鍵優勢，但在 AI 應用落地與跨域整合上， 仍面臨「技術更新快速、教學資源分散、軟硬體整合門檻高、以及 AI 治理與倫理思維尚待深化」等挑戰。在此背景下，教育部持續推動人工智慧人才培育計畫，期望從大專校院端建立穩定而前瞻的人才供給管道。 NAPAI 系列計畫即因應臺灣在全球 AI 發展浪潮中的戰略定位而規劃，本子計畫聚焦「Agent AI 與 Physical AI」， 透過系統性的課程設計與教學示範，回應產業對智慧代理、智慧機器人及具跨域應用能力之 AI 人才的實際需求。</li>
+                <li>計畫目標：NAPAI 採取「少而精、重實效」的策略，鎖定兩大技術主軸，整合種子師資培訓、課程模組共創、示範課程試行、 學生實作競賽與社群經營等面向，讓參與教師能在同一套框架下持續更新教材與案例。透過開源教材、共編課程地圖與 GitHub 課程庫的形式，協助各校快速導入並依在地需求彈性調整。培育具備前瞻技術視野與跨域實作能力的 AI 專業人才；提升教師在 Agent AI 與 Physical AI 領域的教學與實務能量； 建立可擴散、可維護的 AI 課程模組與社群支持系統；並透過實作專題與競賽，引導學生關注真實產業情境與社會需求， 為臺灣未來 AI 產業與智慧應用發展奠定扎實的人才基礎。</li>
             </ul>
+        </div>
+    </section>
 
-            <h3>計畫團隊</h3>
+    <section id="team">
+        <div class="container">
+            <h2>計畫團隊</h2>
+            
+            <h3>主持人與協同主持人</h3>
             <div class="team-grid">
                 <div class="member-card">
-                    <h4>張嘉惠 教授 (計畫主持人)</h4>
-                    <p class="title">國立中央大學資訊工程學系</p>
-                    <p>研究興趣包括Web資訊整合、自然語言理解、資料探勘、智慧計算等。現任國科會工程處智慧計算學門召集人。</p>
+                    <img src="images/張嘉惠.jpg" alt="張嘉惠" class="member-photo">
+                    <h4>張嘉惠 教授</h4>
+                    <p class="title">計畫主持人 | 國立中央大學資訊工程學系</p>
+                    <p class="desc">研究興趣包括Web資訊整合、自然語言理解、資料探勘、智慧計算等。現任國科會工程處智慧計算學門召集人。</p>
                 </div>
                 <div class="member-card">
-                    <h4>戴敏育 教授 (協同主持人)</h4>
-                    <p class="title">國立臺北大學資訊管理研究所</p>
-                    <p>專精於人工智慧、生成式AI、永續綠色金融科技。現任金融科技暨綠色金融研究中心主任。</p>
+                    <img src="images/myday_photo.jpg" alt="戴敏育" class="member-photo">
+                    <h4>戴敏育 教授</h4>
+                    <p class="title">協同主持人 | 國立臺北大學資訊管理研究所</p>
+                    <p class="desc">專精於人工智慧、生成式AI、永續綠色金融科技。現任金融科技暨綠色金融研究中心主任。</p>
                 </div>
                 <div class="member-card">
-                    <h4>胡敏君 教授 (協同主持人)</h4>
-                    <p class="title">國立清華大學資訊工程學系</p>
-                    <p>專精於多媒體運算、電腦視覺、電腦圖學、擴增實境與虛擬實境。</p>
+                    <img src="images/胡敏君.jpg" alt="胡敏君" class="member-photo">
+                    <h4>胡敏君 教授</h4>
+                    <p class="title">協同主持人 | 國立清華大學資訊工程學系</p>
+                    <p class="desc">專精於多媒體運算、電腦視覺、電腦圖學、擴增實境與虛擬實境。</p>
                 </div>
-            </div>
-
-            <h3>諮詢委員</h3>
-            <h4>Agentic AI (智慧代理) 領域</h4>
+           
+            <h3>Agentic AI 諮詢委員</h3>
             <div class="team-grid">
                 <div class="member-card">
-                    <h4>許秉瑜 教授</h4><p class="title">國立中央大學企管系</p>
-                    <p>專精於企業e化管理、資料挖礦、商業智慧與ERP系統管理。</p>
+                    <img src="images/許秉瑜.jpg" alt="許秉瑜" class="member-photo">
+                    <h4>許秉瑜 教授</h4><p class="title">國立中央大學企業管理學系</p>
+                    <p class="desc">專精於企業e化管理、資料挖礦、商業智慧與ERP系統管理。</p>
                 </div>
                 <div class="member-card">
-                    <h4>黃三益 特聘教授</h4><p class="title">國立中山大學資管系</p>
-                    <p>專精於資料庫系統、文字探勘、資料探勘、工作流程管理。</p>
+                    <img src="images/黃三益.jpg" alt="黃三益" class="member-photo">
+                    <h4>黃三益 特聘教授</h4><p class="title">國立中山大學資訊管理學系</p>
+                    <p class="desc">專精於資料庫系統、文字探勘、資料探勘、工作流程管理。</p>
                 </div>
                 <div class="member-card">
+                    <img src="images/chaolin.jpg" alt="劉昭麟" class="member-photo">
                     <h4>劉昭麟 特聘教授</h4><p class="title">國立政治大學資訊科學系</p>
-                    <p>專精於人工智慧、資料分析與知識探勘、數位人文、計算語言學、自動推理與模型建構。</p>
+                    <p class="desc">專精於人工智慧、資料分析與知識探勘、數位人文、計算語言學、自動推理與模型建構。</p>
                 </div>
                 <div class="member-card">
+                    <img src="images/梁伯嵩.jpg" alt="梁伯嵩" class="member-photo">
                     <h4>梁伯嵩 處長</h4><p class="title">聯發科技</p>
-                    <p>專精於數位 IC 設計、AI運算、科技管理與策略分析。現任聯發科技前瞻技術平台資深處長。</p>
+                    <p class="desc">專精於數位 IC 設計、處理機架構、SoC 架構、新興運算平台架構(AI運算、量子計算、區塊鏈)、科技管理與策略分析。現任聯發科技前瞻技術平台資深處長。</p>
                 </div>
                 <div class="member-card">
+                    <img src="images/陳柏琳.png" alt="陳柏琳" class="member-photo">
                     <h4>陳柏琳 教授</h4><p class="title">國立臺灣師範大學資訊工程學系</p>
-                    <p>專精於語音辨識、資訊檢索、自然語言處理、機器學習。</p>
+                    <p class="desc">專精於語音辨識、資訊檢索、自然語言處理、機器學習。</p>
                 </div>
                 <div class="member-card">
+                    <img src="images/林縣城.jpg" alt="林縣城" class="member-photo">
                     <h4>林縣城 副總經理</h4><p class="title">叡揚資訊</p>
-                    <p>現任叡揚資訊技術服務總處暨創新研發中心副總經理。</p>
+                    <p class="desc">現任叡揚資訊技術服務總處暨創新研發中心副總經理。</p>
                 </div>
             </div>
 
-            <h4>Robotics AI (實體AI機器人) 領域</h4>
+            <h3>Robotics AI 諮詢委員</h3>
             <div class="team-grid">
                 <div class="member-card">
+                    <img src="images/林沛群.jpg" alt="林沛群" class="member-photo">
                     <h4>林沛群 終身特聘教授</h4><p class="title">國立臺灣大學機械工程學系</p>
-                    <p>專精於機器人、仿生工程、機械系統設計、機電整合/運動控制。</p>
+                    <p class="desc">專精於機器人、仿生工程、機械系統設計、機電整合/運動控制。</p>
                 </div>
                 <div class="member-card">
-                    <h4>張禎元 講座教授</h4><p class="title">國立清華大學動力機械工程系</p>
-                    <p>專精於機電一體化、機器人、機械振動、動力系統與控制、智慧機械和製造等領域。</p>
+                    <img src="images/張禎元.jpg" alt="張禎元" class="member-photo">
+                    <h4>張禎元 講座教授</h4><p class="title">國立清華大學動力機械工程學系</p>
+                    <p class="desc">專精於機電一體化、機器人、機械振動、動力系統與控制、智慧機械和製造等領域。</p>
                 </div>
                 <div class="member-card">
-                    <h4>楊谷洋 教授</h4><p class="title">國立陽明交通大學電機工程學系</p>
-                    <p>專精於智慧型機器人、機器人視覺與控制、智慧型自動化與醫學工程。</p>
+                    <img src="images/楊谷洋.jpg" alt="楊谷洋" class="member-photo">
+                    <h4>楊谷洋 教授</h4><p class="title">陽明交通大學電機工程學系</p>
+                    <p class="desc">專精於機器人學習控制與力控制、機器人路徑規劃與校正、VR/機器人整合、生物控制系統。</p>
                 </div>
                 <div class="member-card">
-                    <h4>羅清泉 教授</h4><p class="title">國立成功大學資訊工程學系</p>
-                    <p>專精於無線網路與通訊、多媒體系統、雲端計算與邊緣計算。</p>
+                    <img src="images/李祖聖.jpg" alt="李祖聖" class="member-photo">
+                    <h4>李祖聖 特聘教授</h4><p class="title">國立成功大學電機工程學系</p>
+                    <p class="desc">專精於人工智慧和生物智慧及其應用、人形機器人、基於人工智慧的服務機器人、模糊系統與控制、機電一體化和4WIS4WID車輛。</p>
                 </div>
+                <div class="member-card">
+                    <img src="images/葉廷仁.jpg" alt="葉廷仁" class="member-photo">
+                    <h4>葉廷仁 特聘教授</h4><p class="title">國立清華大學動力機械工程系</p>
+                    <p class="desc">專精於動態系統建模與控制、非線性控制理論、以及機器人應用。</p>
             </div>
         </div>
     </section>
@@ -321,16 +413,15 @@
     <section id="curriculum">
         <div class="container">
             <h2>課程專區</h2>
-            <p>本區將提供課程地圖、模組介紹以及課程資源庫的連結。</p>
+            <p>提供課程地圖、模組介紹以及課程資源庫的連結。</p>
             <ul>
-                <li>**課程地圖**：智慧代理與實體AI核心課程架構圖 (請在此提供圖片連結)。</li>
-                <li>**模組介紹**：Agentic AI 核心能力 (如LangChain/RAG/KG)、Physical AI 實戰性 (ROS 2/Edge AI/仿真)。</li>
-                <li>**課程資源庫**：課程投影片、講義、實作範例下載/連結。</li>
+                <li>課程地圖：智慧代理與實體AI核心課程架構圖。</li>
+                <li>模組介紹：Agentic AI 核心能力、Physical AI 實戰性。</li>
+                <li>課程資源庫：課程投影片、講義、實作範例下載/連結。</li>
             </ul>
-            <p>👉 **所有課程程式碼與教材皆透過 GitHub 進行版本控制與分享。**</p>
             <div class="platform-links">
-                <a href="[您的GitHub Repository 連結]" class="github"><i class="fab fa-github"></i>前往 GitHub 課程資源</a>
-                <a href="[您的Notion 共編工作區連結]" class="notion"><i class="fas fa-sticky-note"></i>Notion 課程共編平台</a>
+                <a href="[您的GitHub連結]" class="bg-github"><i class="fab fa-github"></i>前往 GitHub 課程資源</a>
+                <a href="[您的Notion連結]" class="bg-notion"><i class="fas fa-sticky-note"></i>Notion 課程共編平台</a>
             </div>
         </div>
     </section>
@@ -339,14 +430,12 @@
         <div class="container">
             <h2>社群與活動</h2>
             <p>本計畫將成立兩大專業社群 (SIG)，定期舉辦活動，促進共同開發與交流。</p>
-            <ul>
-                <li>**SIG 專業社群**：**SIGAgent** (智慧代理) 與 **SIGRobot** (實體機器人) 介紹與招募資訊。</li>
-                <li>**師資培訓**：技術論壇、雙週讀書會、Summer Camp 等重要資訊公告。</li>
-                <li>**競賽專區**：Agent創作大賽、機器人競賽活動辦法與成果展示。</li>
+             <ul>
+                <li>SIG 專業社群：SIGAgent(智慧代理) 與 SIGRobot (實體機器人) 雙週讀書會共創課程模組。</li>
+                <li>競賽活動：Summer Camp、Agent創作大賽、機器人競賽活動辦法等重要資訊公告。</li>
             </ul>
-            <p>💬 **即時交流與討論請加入我們的 Discord 伺服器：**</p>
             <div class="platform-links">
-                <a href="[您的Discord 伺服器邀請連結]" class="discord"><i class="fab fa-discord"></i>立即加入 Discord 社群</a>
+                <a href="[您的Discord連結]" class="bg-discord"><i class="fab fa-discord"></i>立即加入 Discord 社群</a>
             </div>
         </div>
     </section>
@@ -354,10 +443,10 @@
     <section id="outcomes">
         <div class="container">
             <h2>成果展示</h2>
-            <p>計畫產出的課程模組、產學示範應用案例、以及量化成果數據將於此處展示。</p>
+             <p>計畫產出的課程模組、產學示範應用案例、以及量化成果數據將於此處展示。</p>
             <ul>
-                <li>**產學示範應用**：展示智慧教育服務、巡檢機器人等垂直領域應用案例。</li>
-                <li>**計畫文件**：重要工作進度查核點與年度行事曆。</li>
+                <li>產學示範應用：展示智慧教育服務服務、巡檢機器人等應用案例。</li>
+                <li>競賽活動：Agent創作大賽、機器人競賽成果。</li>
             </ul>
         </div>
     </section>
@@ -365,14 +454,42 @@
     <section id="contact">
         <div class="container">
             <h2>聯絡我們</h2>
-            <p style="text-align: center;">如果您對本計畫有任何疑問或合作意向，歡迎聯繫：</p>
-            <p style="text-align: center; font-size: 1.1em; font-weight: 600;">
-                計畫聯絡人：吳明秀 專任助理<br>
-                電子郵件：gmwk2016@gmail.com<br>
-                計畫辦公室：[請填寫您的辦公室地點/電話]
-            </p>
+            <div class="contact-info">
+                [cite_start]<p><i class="fas fa-map-marker-alt"></i> <strong>計畫辦公室：</strong> 國立中央大學 工程五館 B317-1室 [cite: 3]</p>
+                [cite_start]<p><i class="fas fa-phone"></i> <strong>電話：</strong> (03)422-7151 轉 35364（吳明秀助理）/35365（林瑞雅助理） [cite: 3]</p>
+                [cite_start]<p><i class="fas fa-envelope"></i> <strong>信箱：</strong> napai.ncu@gmail.com [cite: 3]</p>
+            </div>
         </div>
     </section>
+
+    <div class="footer-banner">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-item">
+                    <span>指導單位</span>
+                    <img src="images/logo-edu.png" alt="教育部資訊及科技教育司">
+                    <div style="margin-top:5px; font-size:0.8em; color:#666;">教育部資訊及科技教育司</div>
+                </div>
+
+                <div class="footer-item">
+                    <span>主辦單位</span>
+                    <img src="images/logo_NCU.png" alt="國立中央大學">
+                    <div style="margin-top:5px; font-size:0.8em; color:#666;">國立中央大學</div>
+                </div>
+
+                <div class="footer-item">
+                    <span>協辦單位</span>
+                    <img src="images/logo_NTPU.png" alt="國立臺北大學">
+                    <div style="margin-top:5px; font-size:0.8em; color:#666;">國立臺北大學</div>
+                </div>
+                <div class="footer-item">
+                    <span>協辦單位</span>
+                    <img src="images/logo_NTHU.jpg" alt="國立清華大學">
+                    <div style="margin-top:5px; font-size:0.8em; color:#666;">國立清華大學</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
