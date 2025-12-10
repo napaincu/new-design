@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -40,8 +41,8 @@
             align-items: center; /* 確保內容垂直居中 */
         }
         .logo-area {
-            height: 70px; /* <<<< 修正點：加大 Logo 尺寸 >>>> */
-            margin-right: 30px;
+            height: 60px; /* Logo 尺寸 */
+            margin-right: 20px;
             flex-shrink: 0;
         }
         .logo-area img {
@@ -236,8 +237,9 @@
             margin-top: 40px;
         }
         .footer-grid {
+            /* 保持水平排列 */
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; 
             justify-content: center;
             gap: 50px; /* 增加間距 */
             align-items: flex-start;
@@ -266,14 +268,9 @@
             background-color: transparent;
         }
 
-        /* 手機版底部 Logo 調整 */
-        @media (max-width: 600px) {
-            .footer-grid {
-                flex-direction: column;
-                align-items: center;
-                gap: 40px;
-            }
-        }
+        /* * 已移除原本將 footer-grid 設為 flex-direction: column 的手機版調整 
+         * 現在 footer-grid 會在所有尺寸下保持水平排列，空間不足時會自動換行 
+         */
     </style>
 </head>
 <body>
@@ -476,24 +473,24 @@
                 <div class="footer-item">
                     <span>指導單位</span>
                     <img src="image/logo_ITE.png" alt="教育部資訊及科技教育司">
-                    <div style="margin-top:5px; font-size:0.8em; color:#666;">
+                    <div style="margin-top:5px; font-size:0.8em; color:#666;">教育部資訊及科技教育司</div>
                 </div>
 
                 <div class="footer-item">
                     <span>主辦單位</span>
                     <img src="image/logo_NCU.png" alt="國立中央大學">
-                    <div style="margin-top:5px; font-size:0.8em; color:#666;">
+                    <div style="margin-top:5px; font-size:0.8em; color:#666;">國立中央大學</div>
                 </div>
 
                 <div class="footer-item">
                     <span>協辦單位</span>
                     <img src="image/logo_NTPU.png" alt="國立臺北大學">
-                    <div style="margin-top:5px; font-size:0.8em; color:#666;">
+                    <div style="margin-top:5px; font-size:0.8em; color:#666;">國立臺北大學</div>
                 </div>
                 <div class="footer-item">
                     <span>協辦單位</span>
-                    <img src="image/logo_NTHU.jpg" alt="國立清華大學">
-                    <div style="margin-top:5px; font-size:0.8em; color:#666;">
+                    <img src="image/logo_NTHU.png" alt="國立清華大學">
+                    <div style="margin-top:5px; font-size:0.8em; color:#666;">國立清華大學</div>
                 </div>
             </div>
         </div>
