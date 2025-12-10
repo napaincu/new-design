@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -166,6 +165,9 @@
         .bg-github { background-color: #24292e; }
         .bg-discord { background-color: #5865F2; }
         .bg-notion { background-color: #000000; }
+        
+        /* --- 新增：次要連結顏色 (用於區分 Physical AI) --- */
+        .bg-secondary { background-color: #004d80 !important; }
 
         /* --- 團隊成員卡片 (含照片) Grid 設定 --- */
         .team-grid {
@@ -305,9 +307,13 @@
             </p>
 
             <div class="platform-links">
-                <a href="[您的GitHub連結]" class="bg-github"><i class="fab fa-github"></i>GitHub</a>
-                <a href="[您的Discord邀請連結]" class="bg-discord"><i class="fab fa-discord"></i>Discord 社群</a>
-                <a href="[您的Notion共編連結]" class="bg-notion"><i class="fas fa-sticky-note"></i>Notion 共編</a>
+                <a href="[您的GitHub連結]" class="bg-github"><i class="fab fa-github"></i>GitHub 課程資源庫</a>
+            </div>
+            
+            <div class="platform-links" style="margin-top: 15px;">
+                <a href="https://discord.gg/jva5jQVA" class="bg-discord"><i class="fab fa-discord"></i>Discord 社群</a>
+                <a href="https://www.notion.so/Agent-AI-aefef4ca13864056b7ebbc70e624e084?source=copy_link" class="bg-notion"><i class="fas fa-sticky-note"></i>Agent AI Notion 共編</a>
+                <a href="https://www.notion.so/Physical-AI-5a3bc5d40bb845e1b55e909104518526?source=copy_link" class="bg-notion bg-secondary"><i class="fas fa-sticky-note"></i>Physical AI Notion 共編</a>
             </div>
         </div>
     </section>
@@ -424,9 +430,15 @@
                 <li>模組介紹：Agentic AI 核心能力、Physical AI 實戰性。</li>
                 <li>課程資源庫：課程投影片、講義、實作範例下載/連結。</li>
             </ul>
-            <div class="platform-links">
+
+            <div class="platform-links" style="justify-content: flex-start; margin-bottom: 20px;">
                 <a href="[您的GitHub連結]" class="bg-github"><i class="fab fa-github"></i>前往 GitHub 課程資源</a>
-                <a href="[您的Notion連結]" class="bg-notion"><i class="fas fa-sticky-note"></i>Notion 課程共編平台</a>
+            </div>
+            
+            <h3>課程共編平台 (Notion)</h3>
+            <div class="platform-links" style="justify-content: flex-start; margin-top: 15px;">
+                <a href="https://www.notion.so/Agent-AI-aefef4ca13864056b7ebbc70e624e084?source=copy_link" class="bg-notion"><i class="fas fa-sticky-note"></i>Agent AI 課程模組</a>
+                <a href="https://www.notion.so/Physical-AI-5a3bc5d40bb845e1b55e909104518526?source=copy_link" class="bg-notion bg-secondary"><i class="fas fa-sticky-note"></i>Physical AI 課程模組</a>
             </div>
         </div>
     </section>
@@ -439,9 +451,10 @@
                 <li>SIG 專業社群：SIGAgent(智慧代理) 與 SIGRobot (實體機器人) 雙週讀書會共創課程模組。</li>
                 <li>競賽活動：Summer Camp、Agent創作大賽、機器人競賽活動辦法等重要資訊公告。</li>
             </ul>
-            <div class="platform-links">
-                <a href="[您的Discord連結]" class="bg-discord"><i class="fab fa-discord"></i>立即加入 Discord 社群</a>
-            </div>
+            
+            <h3>專業社群 (Discord)</h3>
+            <div class="platform-links" style="justify-content: flex-start; margin-top: 15px;">
+                <a href="https://discord.gg/jva5jQVA" class="bg-discord"><i class="fab fa-discord"></i>立即加入Discord社群</a>
         </div>
     </section>
 
